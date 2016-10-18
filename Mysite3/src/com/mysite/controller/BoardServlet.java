@@ -11,26 +11,26 @@ import javax.sql.rowset.serial.SerialException;
 
 import com.bit2016.util.Action;
 import com.bit2016.util.ActionFactory;
-import com.mysite.action.MainActionFactory;
-import com.mysite.action.UserActionFactory;
+import com.mysite.action.BoardActionFactory;
 
-@WebServlet("/user")
-public class UserServlet extends HttpServlet {
+
+@WebServlet("/board")
+public class BoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		
 		String actionName = request.getParameter("action");
-
-		ActionFactory af = new UserActionFactory();
+		ActionFactory af = new BoardActionFactory();
 		Action action = af.getAction(actionName);
-
-		action.execute(request, response);
+	
+			action.execute(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			doGet(request, response);
 	}
 
 }

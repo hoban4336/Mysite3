@@ -1,4 +1,4 @@
-package com.mysite.action.user;
+package com.mysite.action.user.modify;
 
 import java.io.IOException;
 
@@ -17,30 +17,29 @@ public class ModifyAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, SerialException, IOException {
-		UserVo uservo = new  UserVo();
-		
+			throws ServletException,  IOException {
+		//인증여부
+		HttpSession session = request.getSession();
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		if( session ==null || authUser ==null){
+			WebUtil.redirect(request, response, "/Mysite3/mysite");	
+			return; 
+		}
+	
 		String no = request.getParameter("no");
 		String name = request.getParameter("name");
-		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String gender = request.getParameter("gender");
 		
-		uservo.setPassword(password);
-		
-		HttpSession session = request.getSession();
-		session.setAttribute("authUser", uservo);
-		
+		UserVo uservo = new  UserVo();
 		uservo.setNo(Long.parseLong(no.trim()));
 		uservo.setName(name);
-		uservo.setEmail(email);
+		uservo.setPassword(password);
 		uservo.setGender(gender);
 		
-		UserDao dao = new UserDao();
-		dao.update(uservo);
-		
-		WebUtil.redirect(request, response, "/Mysite3/mysite");
-		
+		 new UserDao().update(uservo);
+		 
+		 WebUtil.redirect(request, response, "/Mysite3/user?action=ModifyForm&update=success");	
 	}
 
 }

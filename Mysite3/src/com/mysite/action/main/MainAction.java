@@ -14,7 +14,7 @@ public class MainAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException,SerialException, IOException {
+			throws ServletException, IOException {
 			WebUtil.forward(request, response, "/WEB-INF/views/main/index.jsp");
 	}
 

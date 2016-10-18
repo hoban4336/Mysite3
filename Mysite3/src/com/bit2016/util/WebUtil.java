@@ -14,11 +14,7 @@ public class WebUtil {
 	{
 		
 		RequestDispatcher rd = request.getRequestDispatcher(path);
-		try {
-			rd.forward(request, response);
-		} catch (ServletException e) {
-			e.printStackTrace();
-		}
+		rd.forward(request, response);
 	}
 
 	public static void redirect(HttpServletRequest request,

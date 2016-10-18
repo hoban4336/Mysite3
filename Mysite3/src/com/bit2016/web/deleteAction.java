@@ -16,7 +16,7 @@ public class deleteAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
-			throws SerialException, IOException {
+			throws ServletException, IOException {
 
 		String num = request.getParameter("no");
 		int no = Integer.parseInt(num);

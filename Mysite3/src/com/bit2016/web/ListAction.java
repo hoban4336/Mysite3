@@ -17,15 +17,16 @@ import com.yeon.Dao.GuestbookVo;
 public class ListAction implements Action {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response)throws SerialException, IOException {
+	public void execute(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		GuestBookDao dao = new GuestBookDao();
 		List<GuestbookVo> list = dao.getlist();
 		
 		request.setAttribute("list", list);
-		
+		System.out.println("ListAction");
 		try {
-			WebUtil.forward(request, response, "/WEB-INF/View/index.jsp");
+			WebUtil.forward(request, response, "/WEB-INF/views/index.jsp");
 		} catch (ServletException e) {
 			e.printStackTrace();
 		}

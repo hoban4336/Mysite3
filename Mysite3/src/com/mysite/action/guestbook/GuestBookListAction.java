@@ -1,7 +1,9 @@
-package com.bit2016.web;
+package com.mysite.action.guestbook;
 
 import java.io.IOException;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,31 +14,19 @@ import com.bit2016.util.WebUtil;
 import com.yeon.Dao.GuestBookDao;
 import com.yeon.Dao.GuestbookVo;
 
-public class addAction implements Action {
+public class GuestBookListAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		String name = request.getParameter("name");
-		String password = request.getParameter("password");
-		String content = request.getParameter("content");
-		
-		GuestbookVo vo = new GuestbookVo();
-		vo.setName(name);
-		vo.setPassword(password);
-		vo.setContent(content);
-		
+
 		GuestBookDao dao = new GuestBookDao();
-		dao.insert(vo);
+		List<GuestbookVo> list = dao.getlist();
+		
+		request.setAttribute("list", list);
 
-		try {
-			WebUtil.redirect(request, response, "/Mysite3/guestbook");
-		} catch (ServletException e) {
-			e.printStackTrace();
-		}
+		WebUtil.forward(request, response, "/WEB-INF/views/guestbook/list.jsp");
+
 	}
-
-
 
 }

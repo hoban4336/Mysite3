@@ -9,5 +9,5 @@ import javax.sql.rowset.serial.SerialException;
 
 public interface Action {
 
-	public void execute(HttpServletRequest request, HttpServletResponse response)throws ServletException, SerialException, IOException;
+	public void execute(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException;
 }

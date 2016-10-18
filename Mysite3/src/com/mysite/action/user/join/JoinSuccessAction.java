@@ -1,4 +1,4 @@
-package com.mysite.action.user;
+package com.mysite.action.user.join;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -15,14 +15,10 @@ public class JoinSuccessAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, SerialException, IOException {
-		try {
-			
-			WebUtil.forward(request, response, "WEB-INF/views/user/joinsuccess.jsp");
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			throws ServletException,  IOException {
+
+			WebUtil.forward(request, response, "/WEB-INF/views/user/joinsuccess.jsp");
+
 	}
 
 }

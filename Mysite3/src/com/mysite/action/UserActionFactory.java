@@ -1,9 +1,17 @@
-package com.mysite.action.user;
+package com.mysite.action;
 
 import com.bit2016.util.Action;
 import com.bit2016.util.ActionFactory;
 import com.bit2016.util.WebUtil;
 import com.mysite.action.main.MainAction;
+import com.mysite.action.user.join.JoinAction;
+import com.mysite.action.user.join.JoinFormAction;
+import com.mysite.action.user.join.JoinSuccessAction;
+import com.mysite.action.user.login.LoginAction;
+import com.mysite.action.user.login.LoginFormAction;
+import com.mysite.action.user.login.LoginOutAction;
+import com.mysite.action.user.modify.ModifyAction;
+import com.mysite.action.user.modify.ModifyFormAction;
 
 public class UserActionFactory extends ActionFactory {
 

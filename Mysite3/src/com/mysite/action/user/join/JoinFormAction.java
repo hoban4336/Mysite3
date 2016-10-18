@@ -1,8 +1,7 @@
-package com.bit2016.web;
+package com.mysite.action.user.join;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,17 +10,14 @@ import javax.sql.rowset.serial.SerialException;
 import com.bit2016.util.Action;
 import com.bit2016.util.WebUtil;
 
-public class deleteFormAction implements Action {
+public class JoinFormAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		try {
-			WebUtil.forward(request, response, "/WEB-INF/Views/deleteform.jsp");
-		} catch (ServletException e) {
-			e.printStackTrace();
-		}
-			
+			throws ServletException,  IOException {
+
+			WebUtil.forward(request, response, "/WEB-INF/views/user/joinform.jsp");
+
 	}
 
 }

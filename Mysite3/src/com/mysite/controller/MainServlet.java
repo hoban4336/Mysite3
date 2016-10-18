@@ -11,7 +11,7 @@ import javax.sql.rowset.serial.SerialException;
 
 import com.bit2016.util.Action;
 import com.bit2016.util.ActionFactory;
-import com.mysite.action.main.MainActionFactory;
+import com.mysite.action.MainActionFactory;
 
 
 @WebServlet("/mysite")
@@ -24,17 +24,14 @@ public class MainServlet extends HttpServlet {
 			String actionName = request.getParameter("action");
 			ActionFactory af = new MainActionFactory();
 			Action action = af.getAction(actionName);
-			try {
-				action.execute(request, response);
-			} catch (SerialException e) {
-				e.printStackTrace();
-			}
+
+			action.execute(request, response);
 					
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+			doGet(request, response);
 	}
 
 }

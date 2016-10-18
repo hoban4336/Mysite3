@@ -1,4 +1,4 @@
-package com.mysite.action.user;
+package com.mysite.action.user.login;
 
 import java.io.IOException;
 
@@ -10,16 +10,12 @@ import javax.sql.rowset.serial.SerialException;
 import com.bit2016.util.Action;
 import com.bit2016.util.WebUtil;
 
-public class JoinFormAction implements Action {
+public class LoginFormAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, SerialException, IOException {
-		try {
-			WebUtil.forward(request, response, "WEB-INF/views/user/joinform.jsp");
-		} catch (ServletException e) {
-			e.printStackTrace();
-		}
+			throws ServletException, IOException {
+		WebUtil.forward(request, response, "/WEB-INF/views/user/loginform.jsp");
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.bit2016.web;
+package com.mysite.action.guestbook;
 
 import java.io.IOException;
 
@@ -12,31 +12,25 @@ import com.bit2016.util.WebUtil;
 import com.yeon.Dao.GuestBookDao;
 import com.yeon.Dao.GuestbookVo;
 
-public class addAction implements Action {
+public class GuestBookAddAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		String content = request.getParameter("content");
 		
 		GuestbookVo vo = new GuestbookVo();
 		vo.setName(name);
-		vo.setPassword(password);
 		vo.setContent(content);
+		vo.setPassword(password);
 		
 		GuestBookDao dao = new GuestBookDao();
 		dao.insert(vo);
 
-		try {
-			WebUtil.redirect(request, response, "/Mysite3/guestbook");
-		} catch (ServletException e) {
-			e.printStackTrace();
-		}
+		WebUtil.redirect(request, response, "/Mysite3/guestbook");
+
 	}
-
-
 
 }

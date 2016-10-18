@@ -1,4 +1,4 @@
-package com.mysite.action.user;
+package com.mysite.action.user.join;
 
 import java.io.IOException;
 
@@ -16,8 +16,8 @@ public class JoinAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, SerialException, IOException {
-		System.out.println("JoinAction");
+			throws ServletException, IOException {
+
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
@@ -32,11 +32,8 @@ public class JoinAction implements Action {
 		UserDao dao = new UserDao();
 		dao.insert(vo);
 		
-		try {
-			WebUtil.redirect(request, response, "/Mysite3/user?action=JoinSuccess");
-		} catch (ServletException e) {
-			e.printStackTrace();
-		}
+		WebUtil.redirect(request, response, "/Mysite3/user?action=JoinSuccess");
+
 	}
 
 }

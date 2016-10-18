@@ -1,4 +1,4 @@
-package com.mysite.action.user;
+package com.mysite.action.user.login;
 
 import java.io.IOException;
 
@@ -17,7 +17,7 @@ public class LoginAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, SerialException, IOException {
+			throws ServletException, IOException {
 
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
@@ -30,8 +30,9 @@ public class LoginAction implements Action {
 		}
 
 		System.out.println(" 로그인 성공 -->인증처리 ");
-//		true: session Manager가 jsessionid와 연결된 session 객체가 없으면, 새로 만들어서 준다. 
-//		false | (); :  jsessionid와 연결된 session 객체가 없으면, null값을 준다.
+
+		//		true		  	 :  session Manager가 jsessionid와 연결된 session 객체가 없으면, 새로 만들어서 준다. 
+		//	false | ();  		 :  jsessionid와 연결된 session 객체가 없으면, null값을 준다.
 		HttpSession session = request.getSession(true);
 		session.setAttribute("authUser", vo);
 		
